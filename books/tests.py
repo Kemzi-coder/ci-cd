@@ -4,11 +4,14 @@ from .models import Book, Author
 
 # Create your tests here.
 
+
 class BookListViewTest(TestCase):
     def setUp(self):
         self.author = Author.objects.create(name='John Doe', bio='Author bio')
-        self.book1 = Book.objects.create(title='Book 1', publication_date='2023-01-01', price=10.99)
-        self.book2 = Book.objects.create(title='Book 2', publication_date='2023-02-01', price=12.99)
+        self.book1 = Book.objects.create(
+            title='Book 1', publication_date='2023-01-01', price=10.99)
+        self.book2 = Book.objects.create(
+            title='Book 2', publication_date='2023-02-01', price=12.99)
         self.book1.authors.add(self.author)
         self.book2.authors.add(self.author)
         self.url = reverse('book_list')
@@ -31,7 +34,8 @@ class BookListViewTest(TestCase):
 class BookDetailViewTest(TestCase):
     def setUp(self):
         self.author = Author.objects.create(name='John Doe', bio='Author bio')
-        self.book = Book.objects.create(title='Book 1', publication_date='2023-01-01', price=10.99)
+        self.book = Book.objects.create(
+            title='Book 1', publication_date='2023-01-01', price=10.99)
         self.book.authors.add(self.author)
         self.url = reverse('book_detail', args=[self.book.id])
 
